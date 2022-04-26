@@ -55,11 +55,10 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: flights-api
-        path: ${{ env.FLIGHTS_ROOT }}
+        path: ${{ env.FLIGHTS_ROOT }}/dist
     - name: Install dependencies
       run: |
         ls .
-        ls ${{env.FLIGHTS_ROOT}}
         ls ${{env.FLIGHTS_ROOT}}/dist
         python -m pip install --upgrade pip
         pip install ${{env.FLIGHTS_ROOT}}/dist/*
