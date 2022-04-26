@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-	AZURE_FUNCTIONAPP_NAME: flights-generator-api
+	AZURE_FUNCTIONAPP_NAME: 'flights-generator-api'
 	FLIGHTS_ROOT: './application'
 	FLIGHTS_PACKAGE: './application/dist/'
 jobs:
