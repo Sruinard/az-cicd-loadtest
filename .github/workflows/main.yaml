@@ -108,10 +108,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: 'Azure Load Testing'
-      working-directory: ${{ env.LOADTEST_ROOT }}
       uses: azure/load-testing@v1
       with:
-        loadTestConfigFile: 'config.yaml'
+        loadTestConfigFile: './loadtest/config.yaml'
         loadTestResource: csu-sr-loadtest-service
         resourceGroup: csu-nl-sr-loadtest-with-cicd
     - uses: actions/upload-artifact@v2
