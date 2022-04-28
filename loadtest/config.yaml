@@ -4,5 +4,5 @@ testPlan: loadtest-trips-api.jmx
 description: 'Hitting azure function to perform a loadtest'
 engineInstances: 1
 failureCriteria: 
-- avg(response_time_ms) > 25
+- avg(response_time_ms) > 125
 - percentage(error) > 20
