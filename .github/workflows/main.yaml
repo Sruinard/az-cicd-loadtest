@@ -11,13 +11,15 @@ env:
   LOADTEST_ROOT: './loadtest'
   FLIGHTS_ROOT: './application'
   FLIGHTS_PACKAGE: './application/dist/'
+  LOADTEST_RESOURCE: 'csu-sr-loadtest-service'
+  RESOURCE_GROUP: 'csu-nl-sr-loadtest-with-cicd'
 jobs:
   build_flights:
     defaults:
       run:
         working-directory: ${{ env.FLIGHTS_ROOT }}
     name: build application
-    environment: production
+    environment: load-test-environment
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -44,7 +46,7 @@ jobs:
     needs: [build_flights]
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: load-test-environment
 
     steps:
     - uses: actions/checkout@v2
@@ -73,7 +75,7 @@ jobs:
     needs: [unit_test] 
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: load-test-environment
     steps:
     - uses: actions/checkout@v2
     
@@ -102,7 +104,7 @@ jobs:
     needs: [deploy_flight] 
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: load-test-environment
     steps:
     - uses: actions/checkout@v2
     - uses: azure/login@v1
@@ -112,8 +114,8 @@ jobs:
       uses: azure/load-testing@v1
       with:
         loadTestConfigFile: './loadtest/config.yaml'
-        loadTestResource: csu-sr-loadtest-service
-        resourceGroup: csu-nl-sr-loadtest-with-cicd
+        loadTestResource: ${{ env.LOADTEST_RESOURCE }}
+        resourceGroup: ${{ env.RESOURCE_GROUP }}
     - uses: actions/upload-artifact@v2
       with:
         name: loadTestResults
