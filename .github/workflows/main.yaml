@@ -1,4 +1,4 @@
-name: Build and Deploy Distributed Tracing
+name: Build, test, deploy test environment, load test
 
 on:
   workflow_dispatch:
