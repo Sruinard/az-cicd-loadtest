@@ -14,6 +14,3 @@ def test_can_get_flight_by_date():
     flight_repo = flights_domain.FlightsInMemRepo()
     res = flight_repo.get_flight_by_date("2022/04/18")
     assert all([flight.date == "2022/04/18" for flight in res])
-
-def test_hello_world():
-    assert True
