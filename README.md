@@ -1,5 +1,5 @@
 # az-cicd-loadtest
-Load test your applications with the Azure Load Testing service
+Load test your applications with the Azure Load Testing service, Azure Functions and Github Actions.
 
 ## Summary 
 This tutorial shows you how to run a loadtest using the Azure Load Testing service. We'll show how to deploy an azure function using a custom build Flights API to retrieve information about flights.
